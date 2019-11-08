@@ -1,0 +1,8 @@
+Dockefile
+docker-compose.yml
+checkpoints/*
+images/*
+results/*
+cache/*
+checkpoints/*
+datasets/*

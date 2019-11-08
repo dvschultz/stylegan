@@ -1,2 +1,7 @@
 __pycache__
 checkpoints/*
+images/*
+results/*
+cache/*
+checkpoints/*
+datasets/*
