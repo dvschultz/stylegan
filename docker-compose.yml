@@ -1,18 +1,15 @@
-version: '2.3'
+version: "2.4"
 services:
   stylegan:
-    image: "eu.gcr.io/stylegan-258409/stylegan:latest"
+    image: ${DOCKER_IMAGE:-eu.gcr.io/stylegan-258409/stylegan}:${DOCKER_IMAGE_VERSION:-latest}
     build:
       context: .
       dockerfile: ./Dockerfile
-    user: "1000:1000"
+    user: ${LOCAL_USER:-1000:1000}
     runtime: nvidia
     volumes: 
-      - './images:/app/images'
-      - './results:/app/results'
-      - './cache:/app/cache'
-      - './checkpoints:/app/checkpoints'
-      - './datasets:/app/datasets'
-
+      - ".:/app/"
+    environment: 
+      CPU_COUNT: ${CPU_COUNT:-1}
     # command: "python dataset_tool.py create_from_images ./datasets/kanji images/kanji/"
     command: "python train.py"

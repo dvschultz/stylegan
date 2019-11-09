@@ -17,11 +17,12 @@ import six.moves.queue as Queue # pylint: disable=import-error
 import traceback
 import numpy as np
 import tensorflow as tf
-import PIL.Image
+import PIL.Image, PIL.ImageFile
 import dnnlib.tflib as tflib
 
 from training import dataset
 
+PIL.ImageFile.LOAD_TRUNCATED_IMAGES = True
 #----------------------------------------------------------------------------
 
 def error(msg):
@@ -519,7 +520,8 @@ def create_from_images(tfrecord_dir, image_dir, shuffle):
     with TFRecordExporter(tfrecord_dir, len(image_filenames)) as tfr:
         order = tfr.choose_shuffled_order() if shuffle else np.arange(len(image_filenames))
         for idx in range(order.size):
-            img = np.asarray(PIL.Image.open(image_filenames[order[idx]]))
+            image_filename = image_filenames[order[idx]]
+            img = np.asarray(PIL.Image.open(image_filename))
             if channels == 1:
                 img = img[np.newaxis, :, :] # HW => CHW
             else:

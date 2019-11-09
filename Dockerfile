@@ -18,7 +18,10 @@ RUN add-apt-repository ppa:deadsnakes/ppa \
 RUN pip install pip setuptools -U \
 && pip install tensorflow-gpu==1.10.0 pillow==5.4.1 requests==2.21.0
 
-COPY . /app
+RUN mkdir -p /app
 WORKDIR /app
+COPY requirements.txt /app
 RUN pip install -r requirements.txt
+
+# COPY . /app
 # ENTRYPOINT [ "python", "dataset-tools.py" ]

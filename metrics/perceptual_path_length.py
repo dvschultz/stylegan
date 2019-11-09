@@ -90,7 +90,7 @@ class PPL(metric_base.MetricBase):
 
                 # Evaluate perceptual distance.
                 img_e0, img_e1 = images[0::2], images[1::2]
-                distance_measure = misc.load_pkl('./pkl/vgg16_zhang_perceptual.pkl') # vgg16_zhang_perceptual.pkl
+                distance_measure = misc.load_pkl('./metrics/pkl/vgg16_zhang_perceptual.pkl') # vgg16_zhang_perceptual.pkl
                 distance_expr.append(distance_measure.get_output_for(img_e0, img_e1) * (1 / self.epsilon**2))
 
         # Sampling loop.

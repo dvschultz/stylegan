@@ -1,13 +1,12 @@
+.env
 __pycache__
 checkpoints/*
 images/*
 results/*
 cache/*
-checkpoints/*
 datasets/*
 !checkpoints/.gitkeep 
 !images/.gitkeep 
 !results/.gitkeep 
 !cache/.gitkeep 
-!checkpoints/.gitkeep 
 !datasets/.gitkeep 

@@ -1,7 +1,9 @@
+.env
+.git
+README.md
 Dockefile
 docker-compose.yml
 checkpoints/*
 images/*
 results/*
 cache/*
-checkpoints/*
